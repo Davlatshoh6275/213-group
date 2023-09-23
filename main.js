@@ -86,25 +86,59 @@
 //     console.log("salom");
 // }
 
-let minus = document.querySelector("#minus")
-let counter = document.querySelector("#count")
-let plus = document.querySelector("#plus")
+// let minus = document.querySelector("#minus")
+// let counter = document.querySelector("#count")
+// let plus = document.querySelector("#plus")
 
-let count = 0
+// let count = 0
 
-counter.innerHTML = count
+// counter.innerHTML = count
 
-plus.addEventListener('click', () => {
-    count++
-    counter.innerHTML = count
-    console.log(count);
-})
+// plus.addEventListener('click', () => {
+//     count++
+//     counter.innerHTML = count
+//     console.log(count);
+// })
 
-minus.addEventListener('click', () => {
-    if (count > 0) {
-        count--
-        counter.innerHTML = count
-    } else {
-        counter.innerHTML = 0
-    }
-})
+// minus.addEventListener('click', () => {
+//     if (count > 0) {
+//         count--
+//         counter.innerHTML = count
+//     } else {
+//         counter.innerHTML = 0
+//     }
+// })
+
+let startBtn = document.querySelector("#start")
+let stopBtn = document.querySelector("#stop")
+let clearBtn = document.querySelector("#clear")
+let hour = document.querySelector("#hour")
+let minut = document.querySelector("#minut")
+let second = document.querySelector("#second")
+
+let h = 0
+let m = 0
+let s = 0
+
+let start = startBtn.onclick = () => {
+    setInterval(() => {
+
+
+        if (s < 59) {
+
+            if (s < 9) {
+                s++
+                second.innerHTML = `0${s}`
+            } else {
+                s++
+                second.innerHTML = s
+
+            }
+        } else {
+            m++
+            minut.innerHTML = m
+            s = 0
+            second.innerHTML = s
+        }
+    }, 100)
+}

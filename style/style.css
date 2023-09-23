@@ -16,15 +16,16 @@
     background: linear-gradient(100deg, #828282,  #e4e3e3 );
 }
 
-.conteiner .counter {
-    width: 400px;
-    height: 150px;
+.conteiner .secondomer {
+    width: 600px;
+    height: 250px;
     border: 1px solid transparent;
     border-radius: 15px;
     background-color: #ebe8e8;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -34,5 +35,15 @@ button {
     padding: 20px 40px;
     cursor: pointer;
     border-radius: 15px;
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.conteiner .secondomer .counts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     font-size: 30px;
 }

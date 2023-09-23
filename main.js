@@ -48,10 +48,33 @@
 //     console.log(item);
 // })
 
-let hi = "Hello"
+// let hi = "Hello"
 
-let h1 = document.querySelector("h1")
+// let h1 = document.querySelector("h1")
 
 // h1.innerText = "salom"
 // h1.innerHTML = `<div>${hi}</div>`
 // h1.innerHTML = "Hello"
+
+let arr = Array.from(document.getElementsByTagName('div'))
+let boxes = document.getElementsByTagName("div")
+
+console.log(arr);
+console.log(boxes);
+
+// String()
+// Number()
+// Object()
+// Boolean()
+// Array()
+
+
+let a = "10.3"
+let b = Number(a)
+
+console.log(a, b);
+
+// parseFloat()
+// parseInt()
+
+

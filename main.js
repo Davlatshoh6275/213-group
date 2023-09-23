@@ -56,25 +56,55 @@
 // h1.innerHTML = `<div>${hi}</div>`
 // h1.innerHTML = "Hello"
 
-let arr = Array.from(document.getElementsByTagName('div'))
-let boxes = document.getElementsByTagName("div")
+// let arr = Array.from(document.getElementsByTagName('div'))
+// let boxes = document.getElementsByTagName("div")
 
-console.log(arr);
-console.log(boxes);
+// console.log(arr);
+// console.log(boxes);
 
-// String()
-// Number()
-// Object()
-// Boolean()
-// Array()
+// // String()
+// // Number()
+// // Object()
+// // Boolean()
+// // Array()
 
 
-let a = "10.3"
-let b = Number(a)
+// let a = "10.3"
+// let b = Number(a)
 
-console.log(a, b);
+// console.log(a, b);
 
 // parseFloat()
 // parseInt()
 
+//  let a =  plus.onclick = () => {
+//     console.log("salom");
+// }
 
+
+// function plusCount() {
+//     console.log("salom");
+// }
+
+let minus = document.querySelector("#minus")
+let counter = document.querySelector("#count")
+let plus = document.querySelector("#plus")
+
+let count = 0
+
+counter.innerHTML = count
+
+plus.addEventListener('click', () => {
+    count++
+    counter.innerHTML = count
+    console.log(count);
+})
+
+minus.addEventListener('click', () => {
+    if (count > 0) {
+        count--
+        counter.innerHTML = count
+    } else {
+        counter.innerHTML = 0
+    }
+})

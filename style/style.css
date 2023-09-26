@@ -16,7 +16,7 @@
     background: linear-gradient(100deg, #828282,  #e4e3e3 );
 }
 
-.conteiner .secondomer {
+/* .conteiner .secondomer {
     width: 600px;
     height: 250px;
     border: 1px solid transparent;
@@ -46,4 +46,84 @@ button {
     align-items: center;
     gap: 15px;
     font-size: 30px;
+} */
+
+button {
+    all: unset;
+    border: 1px solid #000;
+    padding: 20px 40px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 30px;
+    margin: 0 10px;
+    background: linear-gradient(45deg, #6c6c6c,  #f3e2e2 );
+
+}
+
+
+.conteiner .timer {
+    width: 800px;
+    height: 400px;
+    border: 3px solid #5c5c5c;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteiner .timer .counters {
+    width: 100%;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.conteiner .timer .counters .count {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+}
+.conteiner .timer .counters .count h1 {
+    font-size: 50px;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+.conteiner .timer .counters span {
+    font-size: 60px;
+}
+
+.active {
+    animation: timer 1s ease infinite;
+}
+
+@keyframes timer {
+    from {
+        opacity: 1;
+    } to {
+        opacity: 0;
+    }
+}
+
+.conteiner .timer .btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.conteiner .timer .btns button {
+    width: 30%;
+    text-align: center;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #6c6c6c,  #f3e2e2 );
 }

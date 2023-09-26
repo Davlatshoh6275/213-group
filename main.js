@@ -109,46 +109,47 @@
 //     }
 // })
 
-let startBtn = document.querySelector("#start")
-let stopBtn = document.querySelector("#stop")
-let clearBtn = document.querySelector("#clear")
-let hour = document.querySelector("#hour")
-let minut = document.querySelector("#minut")
-let second = document.querySelector("#second")
+// let startBtn = document.querySelector("#start")
+// let stopBtn = document.querySelector("#stop")
+// let clearBtn = document.querySelector("#clear")
+// let hour = document.querySelector("#hour")
+// let minut = document.querySelector("#minut")
+// let second = document.querySelector("#second")
 
-let h = 0
-let m = 0
-let s = 0
-let inter;
+// let h = 0
+// let m = 0
+// let s = 0
+// let inter;
 
-let start = startBtn.onclick = () => {
-    inter = setInterval(() => {
-        if (s < 59) {
-            if (s < 9) {
-                s++
-                second.innerHTML = `0${s}`
-            } else {
-                s++
-                second.innerHTML = s
-            }
-        } else {
-            m++
-            minut.innerHTML = m
-            s = 0
-            second.innerHTML = s
-        }
-    }, 100)
-}
+// let start = startBtn.onclick = () => {
+//     inter = setInterval(() => {
+//         if (s < 59) {
+//             if (s < 9) {
+//                 s++
+//                 second.innerHTML = `0${s}`
+//             } else {
+//                 s++
+//                 second.innerHTML = s
+//             }
+//         } else {
+//             m++
+//             minut.innerHTML = m
+//             s = 0
+//             second.innerHTML = s
+//         }
+//     }, 100)
+// }
 
-stopBtn.onclick = () => {
-    clearInterval(inter)
-}
-clearBtn.addEventListener('click', () => {
-    clearInterval(inter)
-    h = 0
-    m = 0
-    s = 0
-    minut.innerHTML = "00"
-    hour.innerHTML = "00"
-    second.innerHTML = "00"
-})
+// stopBtn.onclick = () => {
+//     clearInterval(inter)
+// }
+// clearBtn.addEventListener('click', () => {
+//     clearInterval(inter)
+//     h = 0
+//     m = 0
+//     s = 0
+//     minut.innerHTML = "00"
+//     hour.innerHTML = "00"
+//     second.innerHTML = "00"
+// })
+

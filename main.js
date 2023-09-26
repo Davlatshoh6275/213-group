@@ -119,20 +119,17 @@ let second = document.querySelector("#second")
 let h = 0
 let m = 0
 let s = 0
+let inter;
 
 let start = startBtn.onclick = () => {
-    setInterval(() => {
-
-
+    inter = setInterval(() => {
         if (s < 59) {
-
             if (s < 9) {
                 s++
                 second.innerHTML = `0${s}`
             } else {
                 s++
                 second.innerHTML = s
-
             }
         } else {
             m++
@@ -142,3 +139,16 @@ let start = startBtn.onclick = () => {
         }
     }, 100)
 }
+
+stopBtn.onclick = () => {
+    clearInterval(inter)
+}
+clearBtn.addEventListener('click', () => {
+    clearInterval(inter)
+    h = 0
+    m = 0
+    s = 0
+    minut.innerHTML = "00"
+    hour.innerHTML = "00"
+    second.innerHTML = "00"
+})

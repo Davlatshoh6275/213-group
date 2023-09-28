@@ -300,33 +300,54 @@
 
 
 
-const box = document.querySelector(".box")
-const boxTwo = document.querySelector(".boxTwo")
-const boxThree = document.querySelector(".boxThree")
-const boxFour = document.querySelector(".boxFour")
+// const box = document.querySelector(".box")
+// const boxTwo = document.querySelector(".boxTwo")
+// const boxThree = document.querySelector(".boxThree")
+// const boxFour = document.querySelector(".boxFour")
 
-let a = false
-box.addEventListener('click', function () {
-    if (a === false) {
-        box.classList.add('active')
-        a = true
-    } else {
-        box.classList.remove('active')
-        a = false
-    }
-})
+// let a = false
+// box.addEventListener('click', function () {
+//     if (a === false) {
+//         box.classList.add('active')
+//         a = true
+//     } else {
+//         box.classList.remove('active')
+//         a = false
+//     }
+// })
 
-boxTwo.addEventListener('click', function () {
-    boxTwo.classList.toggle('active')
-    
-    console.log(boxTwo.classList.contains('active'));
-    
-    // console.log(boxTwo.classList.values(boxTwo));
+// boxTwo.addEventListener('click', function () {
+//     boxTwo.classList.toggle('active')
 
-})
+//     console.log(boxTwo.classList.contains('active'));
+
+//     // console.log(boxTwo.classList.values(boxTwo));
+
+// })
 // boxThree.addEventListener('click', function () {
 //     boxThree.classList.add('active')
 // })
 // boxFour.addEventListener('click', function () {
 //     boxFour.classList.add('active')
 // })
+
+
+const inp = document.querySelector('input')
+let btn = document.querySelector("button")
+let w;
+
+function inpText() {
+    inp.addEventListener('keyup', function (event) {
+        w = event.target.value
+    })
+}
+
+
+inpText()
+
+btn.addEventListener('click', (event) => {
+    event.preventDefault()
+
+    console.log(w);
+
+})

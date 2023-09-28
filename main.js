@@ -154,146 +154,179 @@
 // })
 
 
-let plusHour = document.querySelector("#plusHour")
-let minusHour = document.querySelector("#minusHour")
-let plusMinut = document.querySelector("#plusMinut")
-let minusMinut = document.querySelector("#minusMinut")
-let plusSecond = document.querySelector("#plusSecond")
-let minusSecond = document.querySelector("#minusSecond")
-let hour = document.querySelector("#hour")
-let minut = document.querySelector("#minut")
-let second = document.querySelector("#second")
-let span = document.querySelectorAll("span")
-let start = document.querySelector("#start")
-let stop = document.querySelector("#stop")
-let clear = document.querySelector("#clear")
+// let plusHour = document.querySelector("#plusHour")
+// let minusHour = document.querySelector("#minusHour")
+// let plusMinut = document.querySelector("#plusMinut")
+// let minusMinut = document.querySelector("#minusMinut")
+// let plusSecond = document.querySelector("#plusSecond")
+// let minusSecond = document.querySelector("#minusSecond")
+// let hour = document.querySelector("#hour")
+// let minut = document.querySelector("#minut")
+// let second = document.querySelector("#second")
+// let span = document.querySelectorAll("span")
+// let start = document.querySelector("#start")
+// let stop = document.querySelector("#stop")
+// let clear = document.querySelector("#clear")
 
 
-function anim() {
-    span.forEach(item => {
-        item.classList.add("active")
-    })
-}
+// function anim() {
+//     span.forEach(item => {
+//         item.classList.add("active")
+//     })
+// }
 
 
-let h = 0
-let m = 0
-let s = 0
-let inter;
+// let h = 0
+// let m = 0
+// let s = 0
+// let inter;
 
 
-plusHour.onclick = () => {
-    if (h < 9) {
-        h++
-        hour.innerHTML = `0${h}`
-    } else if (h >= 24) {
-        h = 0
-        hour.innerHTML = "00"
-    } else {
-        h++
-        hour.innerHTML = h
-    }
-}
-plusMinut.onclick = () => {
-    if (m < 9) {
-        m++
-        minut.innerHTML = `0${m}`
-    } else if (m >= 59) {
-        m = 0
-        minut.innerHTML = `00`
-    } else {
-        m++
-        minut.innerHTML = m
-    }
-}
-plusSecond.onclick = () => {
-    if (s < 9) {
-        s++
-        second.innerHTML = `0${s}`
-    } else if (s >= 59) {
-        s = 0
-        second.innerHTML = `00`
-    } else {
-        s++
-        second.innerHTML = s
-    }
-}
-
-
-
-
-
-// minus.addEventListener('click', () => {
-//     if (count > 0) {
-//         count--
-//         counter.innerHTML = count
+// plusHour.onclick = () => {
+//     if (h < 9) {
+//         h++
+//         hour.innerHTML = `0${h}`
+//     } else if (h >= 24) {
+//         h = 0
+//         hour.innerHTML = "00"
 //     } else {
-//         counter.innerHTML = 0
+//         h++
+//         hour.innerHTML = h
 //     }
+// }
+// plusMinut.onclick = () => {
+//     if (m < 9) {
+//         m++
+//         minut.innerHTML = `0${m}`
+//     } else if (m >= 59) {
+//         m = 0
+//         minut.innerHTML = `00`
+//     } else {
+//         m++
+//         minut.innerHTML = m
+//     }
+// }
+// plusSecond.onclick = () => {
+//     if (s < 9) {
+//         s++
+//         second.innerHTML = `0${s}`
+//     } else if (s >= 59) {
+//         s = 0
+//         second.innerHTML = `00`
+//     } else {
+//         s++
+//         second.innerHTML = s
+//     }
+// }
+
+
+
+
+
+// // minus.addEventListener('click', () => {
+// //     if (count > 0) {
+// //         count--
+// //         counter.innerHTML = count
+// //     } else {
+// //         counter.innerHTML = 0
+// //     }
+// // })
+
+
+// minusHour.onclick = () => {
+
+
+
+//     if (h > 0) {
+//         h--
+//         hour.innerHTML = h
+//     } else {
+//         h = 0
+//         hour.innerHTML = "00"
+//     }
+
+//     // if (h < 9) {
+//     //     h--
+//     //     hour.innerHTML = `0${h}`
+//     // }
+
+
+// }
+// minusMinut.onclick = () => {
+//     if (m > 0) {
+//         m--
+//         minut.innerHTML = m
+//     } else {
+//         m = 0
+//         minut.innerHTML = "00"
+//     }
+// }
+// minusSecond.onclick = () => {
+//     if (s > 0) {
+//         s--
+//         second.innerHTML = s
+//     } else {
+//         s = 0
+//         second.innerHTML = "00"
+//     }
+// }
+
+// start.onclick = () => {
+//     anim()
+
+//     inter = setInterval(() => {
+
+//         if(s > 0) {
+//             s-- 
+//             second.innerHTML = s
+//         } else if(m > 0) {
+//             s = 59
+//             second.innerHTML = s
+//             m-- 
+//             minut.innerHTML = m
+//         } else if (h > 0) {
+//             s = 59
+//             second.innerHTML = s
+//             m = 59
+//             minut.innerHTML = m
+//             h--
+//             hour.innerHTML = h
+//         } else if(h == 0 && m == 0 && s ==0) {
+//             alert("Tamom...")
+//         }
+
+//     }, 1)
+// }
+
+
+
+const box = document.querySelector(".box")
+const boxTwo = document.querySelector(".boxTwo")
+const boxThree = document.querySelector(".boxThree")
+const boxFour = document.querySelector(".boxFour")
+
+let a = false
+box.addEventListener('click', function () {
+    if (a === false) {
+        box.classList.add('active')
+        a = true
+    } else {
+        box.classList.remove('active')
+        a = false
+    }
+})
+
+boxTwo.addEventListener('click', function () {
+    boxTwo.classList.toggle('active')
+    
+    console.log(boxTwo.classList.contains('active'));
+    
+    // console.log(boxTwo.classList.values(boxTwo));
+
+})
+// boxThree.addEventListener('click', function () {
+//     boxThree.classList.add('active')
 // })
-
-
-minusHour.onclick = () => {
-
-
-
-    if (h > 0) {
-        h--
-        hour.innerHTML = h
-    } else {
-        h = 0
-        hour.innerHTML = "00"
-    }
-
-    // if (h < 9) {
-    //     h--
-    //     hour.innerHTML = `0${h}`
-    // }
-
-
-}
-minusMinut.onclick = () => {
-    if (m > 0) {
-        m--
-        minut.innerHTML = m
-    } else {
-        m = 0
-        minut.innerHTML = "00"
-    }
-}
-minusSecond.onclick = () => {
-    if (s > 0) {
-        s--
-        second.innerHTML = s
-    } else {
-        s = 0
-        second.innerHTML = "00"
-    }
-}
-
-start.onclick = () => {
-    anim()
-
-    inter = setInterval(() => {
-
-        if(s > 0) {
-            s-- 
-            second.innerHTML = s
-        } else if(m > 0) {
-            s = 59
-            second.innerHTML = s
-            m-- 
-            minut.innerHTML = m
-        } else if (h > 0) {
-            s = 59
-            second.innerHTML = s
-            m = 59
-            minut.innerHTML = m
-            h--
-            hour.innerHTML = h
-        } else if(h == 0 && m == 0 && s ==0) {
-            alert("Tamom...")
-        }
-
-    }, 1)
-}
+// boxFour.addEventListener('click', function () {
+//     boxFour.classList.add('active')
+// })

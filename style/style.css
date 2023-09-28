@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     background: linear-gradient(100deg, #828282,  #e4e3e3 );
 }
 
@@ -47,7 +48,7 @@ button {
     gap: 15px;
     font-size: 30px;
 } */
-
+/* 
 button {
     all: unset;
     border: 1px solid #000;
@@ -126,4 +127,30 @@ button {
     text-align: center;
     text-transform: uppercase;
     background: linear-gradient(45deg, #6c6c6c,  #f3e2e2 );
+} */
+
+.conteiner .box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+.conteiner .boxTwo {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+.conteiner .boxThree {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+.conteiner .boxFour {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+
+.active {
+    border-radius: 50%;
+    background-color: red;
 }

@@ -332,22 +332,44 @@
 // })
 
 
-const inp = document.querySelector('input')
-let btn = document.querySelector("button")
-let w;
+// const inp = document.querySelector('input')
+// let btn = document.querySelector("button")
+// let w;
 
-function inpText() {
-    inp.addEventListener('keyup', function (event) {
-        w = event.target.value
-    })
+// function inpText() {
+//     inp.addEventListener('keyup', function (event) {
+//         w = event.target.value
+//     })
+// }
+
+
+// inpText()
+
+// btn.addEventListener('click', (event) => {
+//     event.preventDefault()
+// })
+
+
+
+const inp = document.querySelector('input')
+
+function checkInpAtt() {
+
+    let check = inp.hasAttribute("placeholder")
+
+    if (check) {
+        let a = "write something important !!!"
+        inp.setAttribute("placeholder", a)
+    } else {
+        inp.setAttribute('placeholder', 'yaratildi')
+    }
+
+    // let a = inp.getAttribute("placeholder")
+
+
+
+
+    // console.log(a);
 }
 
-
-inpText()
-
-btn.addEventListener('click', (event) => {
-    event.preventDefault()
-
-    console.log(w);
-
-})
+checkInpAtt()

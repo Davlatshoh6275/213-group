@@ -351,25 +351,45 @@
 
 
 
-const inp = document.querySelector('input')
+// const inp = document.querySelector('input')
 
-function checkInpAtt() {
+// function checkInpAtt() {
 
-    let check = inp.hasAttribute("placeholder")
+//     let check = inp.hasAttribute("placeholder")
 
-    if (check) {
-        let a = "write something important !!!"
-        inp.setAttribute("placeholder", a)
+//     if (check) {
+//         let a = "write something important !!!"
+//         inp.setAttribute("placeholder", a)
+//     } else {
+//         inp.setAttribute('placeholder', 'yaratildi')
+//     }
+
+//     // let a = inp.getAttribute("placeholder")
+//     // console.log(a);
+// }
+
+// checkInpAtt()
+
+
+let img_1 = 'https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?cs=srgb&dl=pexels-pixabay-206959.jpg&fm=jpg'
+let img_2 = 'https://www.wallpaperflare.com/static/870/310/341/apple-leaf-white-background-two-wallpaper.jpg'
+
+
+let box = document.querySelector('.box')
+let img = document.querySelector('img')
+
+let active = true
+
+box.addEventListener('click', () => {
+    if (active) {
+        active = false
+        img.setAttribute('src', img_1)
+        img.classList.add('active')
     } else {
-        inp.setAttribute('placeholder', 'yaratildi')
+        active = true
+        img.setAttribute('src', img_2)
+        img.classList.add('active')
     }
 
-    // let a = inp.getAttribute("placeholder")
-
-
-
-
-    // console.log(a);
-}
-
-checkInpAtt()
+    console.log(active);
+})

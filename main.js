@@ -371,25 +371,27 @@
 // checkInpAtt()
 
 
-let img_1 = 'https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?cs=srgb&dl=pexels-pixabay-206959.jpg&fm=jpg'
-let img_2 = 'https://www.wallpaperflare.com/static/870/310/341/apple-leaf-white-background-two-wallpaper.jpg'
+// let img_1 = 'https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?cs=srgb&dl=pexels-pixabay-206959.jpg&fm=jpg'
+// let img_2 = 'https://www.wallpaperflare.com/static/870/310/341/apple-leaf-white-background-two-wallpaper.jpg'
 
 
-let box = document.querySelector('.box')
-let img = document.querySelector('img')
+// let box = document.querySelector('.box')
+// let img = document.querySelector('img')
 
-let active = true
+// let active = true
 
-box.addEventListener('click', () => {
-    if (active) {
-        active = false
-        img.setAttribute('src', img_1)
-        img.classList.add('active')
-    } else {
-        active = true
-        img.setAttribute('src', img_2)
-        img.classList.add('active')
-    }
+// box.addEventListener('click', () => {
+//     if (active) {
+//         active = false
+//         img.setAttribute('src', img_1)
+//         img.classList.add('active')
+//     } else {
+//         active = true
+//         img.setAttribute('src', img_2)
+//         img.classList.add('active')
+//     }
 
-    console.log(active);
-})
+//     console.log(active);
+// })
+
+

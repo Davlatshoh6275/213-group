@@ -375,7 +375,6 @@
 // let img_2 = 'https://www.wallpaperflare.com/static/870/310/341/apple-leaf-white-background-two-wallpaper.jpg'
 
 
-// let box = document.querySelector('.box')
 // let img = document.querySelector('img')
 
 // let active = true
@@ -395,3 +394,62 @@
 // })
 
 
+// let box = document.querySelector('.box')
+
+
+// box.addEventListener('click' , () => {
+//     console.log("click");
+// })
+
+// box.onclick = () => {
+//         console.log("click");
+// }
+
+// function clicked() {
+//     console.log("click");
+// }
+
+// let inp = document.querySelector('input').value
+
+
+// inp.addEventListener('keyup', (event) => {
+//     console.log(
+//         event.target.value
+//     );
+// })
+
+// inp.onchange = (event) => {
+//     console.log(event.target.value);
+// }
+
+// function changed(a) {
+//     console.log(a);
+//     // console.log("click");
+// }
+
+
+
+// let box = document.querySelector('.box')
+
+
+// box.addEventListener('dblclick', () => {
+//     console.log("click");
+// })
+// box.addEventListener('mouseenter', () => {
+//     console.log("enter");
+// console.log(inp);
+
+// })
+// box.addEventListener('mouseleave', () => {
+//     console.log("leave");
+// })
+
+
+
+let boxes = document.querySelectorAll('.item')
+
+boxes.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.classList.add('active')
+    })
+})

@@ -446,10 +446,11 @@
 
 
 
-let boxes = document.querySelectorAll('.item')
+// let boxes = document.querySelectorAll('.item')
 
-boxes.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.classList.add('active')
-    })
-})
+// boxes.forEach(item => {
+//     item.addEventListener('mouseenter', () => {
+//         item.classList.add('active')
+//     })
+// })
+

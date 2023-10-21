@@ -9,10 +9,10 @@
 
 .conteiner {
   width: 100%;
-  height: 100vh;
-  display: flex;
+  height: 100%;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   gap: 20px;
   background: linear-gradient(100deg, #828282, #e4e3e3);
 }
@@ -190,7 +190,7 @@ button {
   object-fit: cover;
 } */
 
-.content {
+/* .content {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -224,4 +224,40 @@ button {
     border-radius: 0s;
     background-color: blue;
   }
+} */
+
+
+.conteiner .content {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 300px;
+  height: 60px;
+  text-transform: uppercase;
+  font-size: 36px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 15px;
 }

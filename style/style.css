@@ -9,10 +9,10 @@
 
 .conteiner {
   width: 100%;
-  height: 100%;
-  /* display: flex;
+  height: 100vh;
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
   gap: 20px;
   background: linear-gradient(100deg, #828282, #e4e3e3);
 }
@@ -227,7 +227,7 @@ button {
 } */
 
 
-.conteiner .content {
+/* .conteiner .content {
   width: 100%;
   height: 100%;
   background-color: #ccc;
@@ -248,16 +248,57 @@ button {
   align-items: center;
 }
 
-button {
-  width: 300px;
-  height: 60px;
-  text-transform: uppercase;
-  font-size: 36px;
-}
 
 img {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 15px;
+} */
+button {
+  width: 150px;
+  height: 100px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+}
+
+.conteiner .counter {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  border: 1px solid transparent;
+  background-color: rgb(177, 179, 180);
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+.interval {
+  width: 500px;
+  height: 100%;
+  border: 1px solid #000;
+  background-color: #fff;
+
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+li {
+  border: 1px solid #000;
+  padding: 10px;
 }

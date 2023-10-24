@@ -460,14 +460,16 @@
 //     box.classList.contains('list')
 // );
 
-// let content = document.querySelector('.content')
 // let url = 'https://img.freepik.com/premium-photo/closeup-nature-view-colorful-leaves_860528-2622.jpg'
 
 
+// let content = document.querySelector('.content')
 // let btnDiv = document.querySelector('.divBtn')
 // let btnImg = document.querySelector('.imgBtn')
 
 // let count = 0
+
+
 
 // function addBox() {
 //     let div = document.createElement('div')
@@ -477,17 +479,92 @@
 //     content.append(div)
 // }
 
-
-// function addImg() {
-//     let img = document.createElement('img')
-//     img.setAttribute('src', url)
-//     content.append(img)
-// }
-
 // btnDiv.addEventListener('click', () => {
 //     addBox()
 // })
 
-// btnImg.addEventListener('click', () => {
-//     addImg()
+
+// let plus = document.querySelector('.plus')
+// let count = document.querySelector('.count')
+// let minus = document.querySelector('.minus')
+
+// getData()
+// plus.addEventListener('click', () => {
+//     count.innerHTML = ++count.innerHTML
+
+//     localStorage.setItem("count", JSON.stringify(count.innerHTML))
 // })
+// minus.addEventListener('click', () => {
+//     if (parseInt(count.innerHTML) > 0) {
+//         count.innerHTML = --count.innerHTML
+//     } else {
+//         count.innerHTML = 0
+//     }
+//     localStorage.setItem("count", JSON.stringify(count.innerHTML))
+// })
+
+let start = document.querySelector('.start')
+let interBox = document.querySelector('.interval')
+let stopBtn = document.querySelector('.stop')
+let count = document.querySelector('.count')
+let interBtn = document.querySelector('.inter')
+let remove = document.querySelector('.remove')
+
+let interval;
+let a = 0
+let arr = []
+
+function getData() {
+    arr = JSON.parse(localStorage.getItem('seconds') || "[]")
+    arr.forEach(item => {
+        let li = document.createElement('li')
+        li.innerHTML = item.title + ": " + item.count
+
+        interBox.appendChild(li)
+    });
+
+}
+
+getData()
+
+
+
+
+start.addEventListener('click', () => {
+    interval = setInterval(() => {
+        count.innerHTML = ++count.innerHTML
+
+    }, 100)
+})
+
+
+stopBtn.addEventListener('click', () => {
+    clearInterval(interval)
+})
+
+interBtn.addEventListener('click', () => {
+    a++
+    let obj = {
+        title: `counter ${a}`,
+        count: count.innerHTML
+    }
+
+    arr.push(obj)
+
+    localStorage.setItem('seconds', JSON.stringify(arr))
+
+
+    let li = document.createElement('li')
+    li.innerHTML = obj.title + ": " + obj.count
+
+    interBox.appendChild(li)
+
+
+    console.log(obj);
+})
+
+remove.addEventListener('click', () => {
+    localStorage.removeItem('seconds')
+    interBox.innerHTML = ''
+    getData()
+})

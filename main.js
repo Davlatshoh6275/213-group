@@ -460,34 +460,34 @@
 //     box.classList.contains('list')
 // );
 
-let content = document.querySelector('.content')
-let url = 'https://img.freepik.com/premium-photo/closeup-nature-view-colorful-leaves_860528-2622.jpg'
+// let content = document.querySelector('.content')
+// let url = 'https://img.freepik.com/premium-photo/closeup-nature-view-colorful-leaves_860528-2622.jpg'
 
 
-let btnDiv = document.querySelector('.divBtn')
-let btnImg = document.querySelector('.imgBtn')
+// let btnDiv = document.querySelector('.divBtn')
+// let btnImg = document.querySelector('.imgBtn')
 
-let count = 0
+// let count = 0
 
-function addBox() {
-    let div = document.createElement('div')
-    count++
-    div.classList.add('box')
-    div.innerHTML = `<h1>${count}</h1>`
-    content.append(div)
-}
+// function addBox() {
+//     let div = document.createElement('div')
+//     count++
+//     div.classList.add('box')
+//     div.innerHTML = `<h1>${count}</h1>`
+//     content.append(div)
+// }
 
 
-function addImg() {
-    let img = document.createElement('img')
-    img.setAttribute('src', url)
-    content.append(img)
-}
+// function addImg() {
+//     let img = document.createElement('img')
+//     img.setAttribute('src', url)
+//     content.append(img)
+// }
 
-btnDiv.addEventListener('click', () => {
-    addBox()
-})
+// btnDiv.addEventListener('click', () => {
+//     addBox()
+// })
 
-btnImg.addEventListener('click', () => {
-    addImg()
-})
+// btnImg.addEventListener('click', () => {
+//     addImg()
+// })

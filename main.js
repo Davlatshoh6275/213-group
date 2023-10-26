@@ -503,68 +503,69 @@
 //     localStorage.setItem("count", JSON.stringify(count.innerHTML))
 // })
 
-let start = document.querySelector('.start')
-let interBox = document.querySelector('.interval')
-let stopBtn = document.querySelector('.stop')
-let count = document.querySelector('.count')
-let interBtn = document.querySelector('.inter')
-let remove = document.querySelector('.remove')
+// let start = document.querySelector('.start')
+// let interBox = document.querySelector('.interval')
+// let stopBtn = document.querySelector('.stop')
+// let count = document.querySelector('.count')
+// let interBtn = document.querySelector('.inter')
+// let remove = document.querySelector('.remove')
 
-let interval;
-let a = 0
-let arr = []
+// let interval;
+// let a = 0
+// let arr = []
 
-function getData() {
-    arr = JSON.parse(localStorage.getItem('seconds') || "[]")
-    arr.forEach(item => {
-        let li = document.createElement('li')
-        li.innerHTML = item.title + ": " + item.count
+// function getData() {
+//     arr = JSON.parse(localStorage.getItem('seconds') || "[]")
+//     arr.forEach(item => {
+//         let li = document.createElement('li')
+//         li.innerHTML = item.title + ": " + item.count
 
-        interBox.appendChild(li)
-    });
+//         interBox.appendChild(li)
+//     });
 
-}
+// }
 
-getData()
-
-
+// getData()
 
 
-start.addEventListener('click', () => {
-    interval = setInterval(() => {
-        count.innerHTML = ++count.innerHTML
-
-    }, 100)
-})
 
 
-stopBtn.addEventListener('click', () => {
-    clearInterval(interval)
-})
+// start.addEventListener('click', () => {
+//     interval = setInterval(() => {
+//         count.innerHTML = ++count.innerHTML
 
-interBtn.addEventListener('click', () => {
-    a++
-    let obj = {
-        title: `counter ${a}`,
-        count: count.innerHTML
-    }
-
-    arr.push(obj)
-
-    localStorage.setItem('seconds', JSON.stringify(arr))
+//     }, 100)
+// })
 
 
-    let li = document.createElement('li')
-    li.innerHTML = obj.title + ": " + obj.count
+// stopBtn.addEventListener('click', () => {
+//     clearInterval(interval)
+// })
 
-    interBox.appendChild(li)
+// interBtn.addEventListener('click', () => {
+//     a++
+//     let obj = {
+//         title: `counter ${a}`,
+//         count: count.innerHTML
+//     }
+
+//     arr.push(obj)
+
+//     localStorage.setItem('seconds', JSON.stringify(arr))
 
 
-    console.log(obj);
-})
+//     let li = document.createElement('li')
+//     li.innerHTML = obj.title + ": " + obj.count
 
-remove.addEventListener('click', () => {
-    localStorage.removeItem('seconds')
-    interBox.innerHTML = ''
-    getData()
-})
+//     interBox.appendChild(li)
+
+
+//     console.log(obj);
+// })
+
+// remove.addEventListener('click', () => {
+//     localStorage.removeItem('seconds')
+//     interBox.innerHTML = ''
+//     getData()
+// })
+

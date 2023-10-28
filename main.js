@@ -575,40 +575,52 @@ let inp = document.querySelector('.text')
 let addTodo = document.querySelector('.addTodo')
 let todoBox = document.querySelector('.todoBox')
 
-let count = 0
+
+const state = {
+    todos: [],
+    newTodo: {
+        id: Math.random(),
+        title: '',
+    },
+    editTodo: {}
+}
 
 let todo = {
     title: ''
 }
 
-function getValue(obj) {
+function getValue() {
     inp.addEventListener('keyup', (event) => {
         let value = event.target.value
 
-        obj.title = value
+        state.newTodo.title = value
     })
+    console.log(state);
 }
 
-getValue(todo)
+
+getValue()
 
 addTodo.addEventListener('click', (event) => {
     event.preventDefault()
-    getValue(todo)
-    count++
+    getValue()
 
     let todoHtml = `
-    <li class="todo" id="${count}" >
-   ${todo.title}
+    <li class="todo" id="${state.newTodo.id}" >
+   ${state.newTodo.title}
     <div>
-        <button data-delete="salom" class="delete">X</button>
+        <button data-delete="delete" class="delete">X</button>
         <button class="change"><i class='bx bxs-chat'></i></button>
     </div>
   </li>`
 
     todoBox.insertAdjacentHTML("beforeend", todoHtml)
     inp.value = ''
+    let todo = state.newTodo
 
-    
+    state.todos.push(todo)
+
+    console.log(todo);
 
 })
 
@@ -618,4 +630,6 @@ window.addEventListener('click', (event) => {
         let todo = event.target.closest('.todo')
         todo.remove()
     }
+
+    let li = event.target.closest(".todo")
 })

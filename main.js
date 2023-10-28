@@ -585,9 +585,6 @@ const state = {
     editTodo: {}
 }
 
-let todo = {
-    title: ''
-}
 
 function getValue() {
     inp.addEventListener('keyup', (event) => {
@@ -595,7 +592,6 @@ function getValue() {
 
         state.newTodo.title = value
     })
-    console.log(state);
 }
 
 
@@ -614,13 +610,19 @@ addTodo.addEventListener('click', (event) => {
     </div>
   </li>`
 
+
     todoBox.insertAdjacentHTML("beforeend", todoHtml)
     inp.value = ''
-    let todo = state.newTodo
 
+    let todo = state.newTodo
     state.todos.push(todo)
 
-    console.log(todo);
+    localStorage.setItem('todos', JSON.stringify([...state.todos]))
+
+    state.newTodo = {
+        id: Math.random(),
+        title: ''
+    }
 
 })
 
@@ -628,8 +630,44 @@ window.addEventListener('click', (event) => {
     let btn = event.target.dataset.delete
     if (btn) {
         let todo = event.target.closest('.todo')
-        todo.remove()
-    }
 
-    let li = event.target.closest(".todo")
+        let id = todo.getAttribute('id')
+
+        console.log(todo);
+
+        for (let i = 0; i < state.todos.length; i++) {
+            if (state.todos[i].id === parseFloat(id)) {
+
+                state.todos.splice(i, 1)
+
+                localStorage.setItem('todos', JSON.stringify([...state.todos]))
+                todo.remove()
+            }
+        }
+    }
 })
+
+
+function getTodos() {
+    state.todos = JSON.parse(localStorage.getItem('todos')) || []
+
+
+    state.todos.forEach(item => {
+        let todoHtml = `
+            <li class="todo" id="${item.id}" >
+                ${item.title}
+                <div>
+                    <button data-delete="delete" class="delete">X</button>
+                    <button class="change"><i class='bx bxs-chat'></i></button>
+                </div>
+             </li>`
+
+
+        todoBox.insertAdjacentHTML("beforeend", todoHtml)
+
+    })
+}
+
+getTodos()
+
+console.log(state);

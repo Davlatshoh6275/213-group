@@ -575,7 +575,6 @@ let inp = document.querySelector('.text')
 let addTodo = document.querySelector('.addTodo')
 let todoBox = document.querySelector('.todoBox')
 
-
 const state = {
     todos: [],
     newTodo: {
@@ -588,9 +587,16 @@ const state = {
 
 function getValue() {
     inp.addEventListener('keyup', (event) => {
-        let value = event.target.value
 
-        state.newTodo.title = value
+        if (event.target.value === state.editTodo.title) {
+            state.editTodo.title = event.target.value
+        } else {
+
+            let value = event.target.value
+
+            state.newTodo.title = value
+        }
+
     })
 }
 
@@ -601,28 +607,48 @@ addTodo.addEventListener('click', (event) => {
     event.preventDefault()
     getValue()
 
-    let todoHtml = `
-    <li class="todo" id="${state.newTodo.id}" >
-   ${state.newTodo.title}
-    <div>
-        <button data-delete="delete" class="delete">X</button>
-        <button class="change"><i class='bx bxs-chat'></i></button>
-    </div>
-  </li>`
+    if (state.editTodo.id) {
+        // console.log(state.editTodo);
+
+        let todo = state.todos.findIndex(item => item.id === state.editTodo.id)
+
+        if (todo !== -1) {
+            state.todos[todo].title = state.newTodo.title
+            let todoItem = document.getElementById(state.editTodo.id)
+            if (todoItem) {
+                todoItem.firstChild.textContent = state.newTodo.title
+            }
+
+            state.editTodo = {}
+            
+        }
+        inp.value = ''
+    } else {
+
+        let todoHtml = `
+        <li class="todo" id="${state.newTodo.id}" >
+       ${state.newTodo.title}
+        <div>
+            <button data-delete="delete" class="delete">X</button>
+            <button data-change="change"><i class='bx bxs-chat' data-change="change"></i></button>
+        </div>
+      </li>`
 
 
-    todoBox.insertAdjacentHTML("beforeend", todoHtml)
-    inp.value = ''
+        todoBox.insertAdjacentHTML("beforeend", todoHtml)
+        inp.value = ''
 
-    let todo = state.newTodo
-    state.todos.push(todo)
+        let todo = state.newTodo
+        state.todos.push(todo)
 
-    localStorage.setItem('todos', JSON.stringify([...state.todos]))
+        localStorage.setItem('todos', JSON.stringify([...state.todos]))
 
-    state.newTodo = {
-        id: Math.random(),
-        title: ''
+        state.newTodo = {
+            id: Math.random(),
+            title: ''
+        }
     }
+
 
 })
 
@@ -630,22 +656,40 @@ window.addEventListener('click', (event) => {
     let btn = event.target.dataset.delete
     if (btn) {
         let todo = event.target.closest('.todo')
-
         let id = todo.getAttribute('id')
-
-        console.log(todo);
-
         for (let i = 0; i < state.todos.length; i++) {
             if (state.todos[i].id === parseFloat(id)) {
-
                 state.todos.splice(i, 1)
-
                 localStorage.setItem('todos', JSON.stringify([...state.todos]))
                 todo.remove()
             }
         }
     }
+
+
+    let changeBtn = event.target.dataset.change
+
+    if (changeBtn) {
+        let todoChange = event.target.closest('.todo')
+        let idChange = todoChange.getAttribute('id')
+        changeTodo(idChange)
+    }
+
+
 })
+
+function changeTodo(id) {
+    for (let i = 0; i < state.todos.length; i++) {
+
+        if (state.todos[i].id === parseFloat(id)) {
+            state.editTodo = state.todos[i]
+
+            inp.value = state.editTodo.title
+        }
+    }
+
+}
+
 
 
 function getTodos() {
@@ -658,7 +702,7 @@ function getTodos() {
                 ${item.title}
                 <div>
                     <button data-delete="delete" class="delete">X</button>
-                    <button class="change"><i class='bx bxs-chat'></i></button>
+                    <button data-change="change"><i class='bx bxs-chat' data-change="change"></i></button>
                 </div>
              </li>`
 
@@ -668,6 +712,7 @@ function getTodos() {
     })
 }
 
+
 getTodos()
 
-console.log(state);
+

@@ -771,8 +771,6 @@ function submid() {
     })
 
     console.log(user);
-
-
 }
 
 

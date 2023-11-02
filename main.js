@@ -571,148 +571,158 @@
 
 
 
-let inp = document.querySelector('.text')
-let addTodo = document.querySelector('.addTodo')
-let todoBox = document.querySelector('.todoBox')
+// let inp = document.querySelector('.text')
+// let addTodo = document.querySelector('.addTodo')
+// let todoBox = document.querySelector('.todoBox')
 
-const state = {
-    todos: [],
-    newTodo: {
-        id: Math.random(),
-        title: '',
-    },
-    editTodo: {}
-}
-
-
-function getValue() {
-    inp.addEventListener('keyup', (event) => {
-
-        if (event.target.value === state.editTodo.title) {
-            state.editTodo.title = event.target.value
-        } else {
-
-            let value = event.target.value
-
-            state.newTodo.title = value
-        }
-
-    })
-}
+// const state = {
+//     todos: [],
+//     newTodo: {
+//         id: Math.random(),
+//         title: '',
+//     },
+//     editTodo: {}
+// }
 
 
-getValue()
+// function getValue() {
+//     inp.addEventListener('keyup', (event) => {
 
-addTodo.addEventListener('click', (event) => {
-    event.preventDefault()
-    getValue()
+//         if (event.target.value === state.editTodo.title) {
+//             state.editTodo.title = event.target.value
+//         } else {
 
-    if (state.editTodo.id) {
-        // console.log(state.editTodo);
+//             let value = event.target.value
 
-        let todo = state.todos.findIndex(item => item.id === state.editTodo.id)
+//             state.newTodo.title = value
+//         }
 
-        if (todo !== -1) {
-            state.todos[todo].title = state.newTodo.title
-            let todoItem = document.getElementById(state.editTodo.id)
-            if (todoItem) {
-                todoItem.firstChild.textContent = state.newTodo.title
-            }
+//     })
+// }
 
-            state.editTodo = {}
+
+// getValue()
+
+// addTodo.addEventListener('click', (event) => {
+//     event.preventDefault()
+//     getValue()
+
+//     if (state.editTodo.id) {
+//         // console.log(state.editTodo);
+
+//         let todo = state.todos.findIndex(item => item.id === state.editTodo.id)
+
+//         if (todo !== -1) {
+//             state.todos[todo].title = state.newTodo.title
+//             let todoItem = document.getElementById(state.editTodo.id)
+//             if (todoItem) {
+//                 todoItem.firstChild.textContent = state.newTodo.title
+//             }
+
+//             state.editTodo = {}
             
-        }
-        inp.value = ''
-    } else {
+//         }
+//         inp.value = ''
+//     } else {
 
-        let todoHtml = `
-        <li class="todo" id="${state.newTodo.id}" >
-       ${state.newTodo.title}
-        <div>
-            <button data-delete="delete" class="delete">X</button>
-            <button data-change="change"><i class='bx bxs-chat' data-change="change"></i></button>
-        </div>
-      </li>`
-
-
-        todoBox.insertAdjacentHTML("beforeend", todoHtml)
-        inp.value = ''
-
-        let todo = state.newTodo
-        state.todos.push(todo)
-
-        localStorage.setItem('todos', JSON.stringify([...state.todos]))
-
-        state.newTodo = {
-            id: Math.random(),
-            title: ''
-        }
-    }
+//         let todoHtml = `
+//         <li class="todo" id="${state.newTodo.id}" >
+//        ${state.newTodo.title}
+//         <div>
+//             <button data-delete="delete" class="delete">X</button>
+//             <button data-change="change"><i class='bx bxs-chat' data-change="change"></i></button>
+//         </div>
+//       </li>`
 
 
-})
+//         todoBox.insertAdjacentHTML("beforeend", todoHtml)
+//         inp.value = ''
 
-window.addEventListener('click', (event) => {
-    let btn = event.target.dataset.delete
-    if (btn) {
-        let todo = event.target.closest('.todo')
-        let id = todo.getAttribute('id')
-        for (let i = 0; i < state.todos.length; i++) {
-            if (state.todos[i].id === parseFloat(id)) {
-                state.todos.splice(i, 1)
-                localStorage.setItem('todos', JSON.stringify([...state.todos]))
-                todo.remove()
-            }
-        }
-    }
+//         let todo = state.newTodo
+//         state.todos.push(todo)
+
+//         localStorage.setItem('todos', JSON.stringify([...state.todos]))
+
+//         state.newTodo = {
+//             id: Math.random(),
+//             title: ''
+//         }
+//     }
 
 
-    let changeBtn = event.target.dataset.change
+// })
 
-    if (changeBtn) {
-        let todoChange = event.target.closest('.todo')
-        let idChange = todoChange.getAttribute('id')
-        changeTodo(idChange)
-    }
+// window.addEventListener('click', (event) => {
+//     let btn = event.target.dataset.delete
+//     if (btn) {
+//         let todo = event.target.closest('.todo')
+//         let id = todo.getAttribute('id')
+//         for (let i = 0; i < state.todos.length; i++) {
+//             if (state.todos[i].id === parseFloat(id)) {
+//                 state.todos.splice(i, 1)
+//                 localStorage.setItem('todos', JSON.stringify([...state.todos]))
+//                 todo.remove()
+//             }
+//         }
+//     }
 
 
-})
+//     let changeBtn = event.target.dataset.change
 
-function changeTodo(id) {
-    for (let i = 0; i < state.todos.length; i++) {
+//     if (changeBtn) {
+//         let todoChange = event.target.closest('.todo')
+//         let idChange = todoChange.getAttribute('id')
+//         changeTodo(idChange)
+//     }
 
-        if (state.todos[i].id === parseFloat(id)) {
-            state.editTodo = state.todos[i]
 
-            inp.value = state.editTodo.title
-        }
-    }
+// })
 
+// function changeTodo(id) {
+//     for (let i = 0; i < state.todos.length; i++) {
+
+//         if (state.todos[i].id === parseFloat(id)) {
+//             state.editTodo = state.todos[i]
+
+//             inp.value = state.editTodo.title
+//         }
+//     }
+
+// }
+
+
+
+// function getTodos() {
+//     state.todos = JSON.parse(localStorage.getItem('todos')) || []
+
+
+//     state.todos.forEach(item => {
+//         let todoHtml = `
+//             <li class="todo" id="${item.id}" >
+//                 ${item.title}
+//                 <div>
+//                     <button data-delete="delete" class="delete">X</button>
+//                     <button data-change="change"><i class='bx bxs-chat' data-change="change"></i></button>
+//                 </div>
+//              </li>`
+
+
+//         todoBox.insertAdjacentHTML("beforeend", todoHtml)
+
+//     })
+// }
+
+
+// getTodos()
+
+
+
+let patterns = {
+    name: /^[a-z ,.'-]+$/i,
+    surname: /^[a-z ,.'-]+$/i,
+    phone: /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/g,
+    email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ig
 }
 
-
-
-function getTodos() {
-    state.todos = JSON.parse(localStorage.getItem('todos')) || []
-
-
-    state.todos.forEach(item => {
-        let todoHtml = `
-            <li class="todo" id="${item.id}" >
-                ${item.title}
-                <div>
-                    <button data-delete="delete" class="delete">X</button>
-                    <button data-change="change"><i class='bx bxs-chat' data-change="change"></i></button>
-                </div>
-             </li>`
-
-
-        todoBox.insertAdjacentHTML("beforeend", todoHtml)
-
-    })
-}
-
-
-getTodos()
 
 

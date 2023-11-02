@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lesson Js || DOM 1</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./style/style.css" />
   </head>
@@ -110,7 +113,7 @@
       </div>
     </div> -->
 
-    <div class="conteiner">
+    <!-- <div class="conteiner">
       <div class="content">
         <form>
           <input type="text" placeholder="write todo ..." class="text" />
@@ -118,17 +121,31 @@
         </form>
         <div class="todos">
           <ul class="todoBox">
-            <!-- <li>
+            <li>
               todo 1
               <div>
                 <button onclick="(e) => deleteItem(e.target)"  class="delete">X</button>
                 <button class="change"><i class='bx bxs-chat'></i></button>
               </div>
-            </li> -->
+            </li>
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <form name="login">
+      <div class="required">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name"  />
+        <span class="error-text"></span>
+      </div>
+      <div>
+        <label for="surname">Surname</label>
+        <input type="text" id="surname" name="surname" />
+        <span class="errorText"></span>
+      </div>
+      <button>send</button>
+    </form>
 
     <script src="./main.js"></script>
   </body>

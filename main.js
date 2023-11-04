@@ -716,62 +716,126 @@
 // getTodos()
 
 
-let inps = document.querySelectorAll('input')
-let form = document.forms.login
+// let inps = document.querySelectorAll('input')
+// let form = document.forms.login
 
-let patterns = {
-    name: /^[a-z ,.'-]+$/i,
-    surname: /^[a-z ,.'-]+$/i,
-    phone: /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/g,
-    email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ig,
+// let patterns = {
+//     name: /^[a-z ,.'-]+$/i,
+//     surname: /^[a-z ,.'-]+$/i,
+//     phone: /^\+998([- ])?(90|91|93|94|95|98|99|33|97|71)([- ])?(\d{3})([- ])?(\d{2})([- ])?(\d{2})$/g,
+//     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ig,
+// }
+
+// inps.forEach(inp => {
+//     inp.addEventListener('keyup', (event) => {
+//         if (patterns[inp.name].test(inp.value)) {
+//             inp.parentElement.classList.remove("errorField")
+//         } else {
+//             inp.parentElement.classList.add("errorField")
+//         }
+//     })
+// })
+
+// form.onsubmit = (event) => {
+//     event.preventDefault()
+
+//     let error = false
+
+//     inps.forEach(inp => {
+//         if (inp.parentElement.classList.contains('errorField') || inp.value.length === 0 && inp.parentElement.classList.contains('required')) {
+//             inp.parentElement.classList.add('errorField')
+//             error = true
+
+//         }
+//     })
+
+//     if (error) {
+//         alert("Error")
+//     } else {
+//         submid()
+//     }
+// }
+
+// function submid() {
+//     let user = {}
+
+//     let fm = new FormData(form)
+//     console.log(fm);
+
+//     fm.forEach((value, key) => {
+//         user[key] = value
+//     })
+
+//     inps.forEach(inp => {
+//         inp.value = ''
+//     })
+
+//     console.log(user);
+// }
+
+
+
+let state = {
+    photos: [],
+    newPhoto: {
+        body: "salom",
+        id: 101,
+        title: "salom",
+        userId: 101
+    },
+    editPhoto: {}
 }
 
-inps.forEach(inp => {
-    inp.addEventListener('keyup', (event) => {
-        if (patterns[inp.name].test(inp.value)) {
-            inp.parentElement.classList.remove("errorField")
-        } else {
-            inp.parentElement.classList.add("errorField")
+
+let limit = 100
+function getPhotoRequest() {
+    return fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`, {
+        method: "GET",
+        headers: {
+            'Content-type': "application/json;"
         }
     })
-})
+        .then((res) => res.json())
+        .then(photos => state.photos = state.photos.concat(photos))
 
-form.onsubmit = (event) => {
-    event.preventDefault()
+}
+getPhotoRequest()
 
-    let error = false
 
-    inps.forEach(inp => {
-        if (inp.parentElement.classList.contains('errorField') || inp.value.length === 0 && inp.parentElement.classList.contains('required')) {
-            inp.parentElement.classList.add('errorField')
-            error = true
-
-        }
+function postPhotoRequest() {
+    return fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: "POST",
+        body: JSON.stringify(state.newPhoto),
+        headers: {
+            'Content-type': "application/json;"
+        },
     })
-
-    if (error) {
-        alert("Error")
-    } else {
-        submid()
-    }
+        .then((res) => console.log(res.json()))
+        .then((post) => state.photos.push(post))
+        .catch(err => console.log(err))
 }
 
-function submid() {
-    let user = {}
+postPhotoRequest()
 
-    let fm = new FormData(form)
-    console.log(fm);
-
-    fm.forEach((value, key) => {
-        user[key] = value
-    })
-
-    inps.forEach(inp => {
-        inp.value = ''
-    })
-
-    console.log(user);
+function deletePostRequest() {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        .then(res => res.json())
 }
 
+btn.onclick = (id) => {
+    state.photos.splice(id, 1)
+    deletePostRequest()
+    getPhotoRequest()
+}
 
+console.log(state);
 
+// let a = ["salom", "xayr"]
+// let b = ["hello", "bye"]
+// let e = a.concat(b)
+// console.log(e);
+
+fetch('https://dummyjson.com/products')
+.then(res => res.json())
+.then(console.log);
+            

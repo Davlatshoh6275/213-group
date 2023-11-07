@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: linear-gradient(100deg, #828282, #e4e3e3);
+  /* background: linear-gradient(100deg, #828282, #e4e3e3); */
 }
 
 /* .conteiner .secondomer {
@@ -350,7 +350,7 @@ li {
   text-decoration: none;
 }
 
-form {
+/* form {
   width: 30%;
   margin: 100px auto;
   display: flex;
@@ -409,4 +409,12 @@ form button {
 
 .errorField::after {
   opacity: 1 !important;
+} */
+
+
+.content {
+  width: 100%;
+  height: 100%;
+  /* background-color: #ccc; */
 }
+

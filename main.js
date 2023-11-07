@@ -775,67 +775,123 @@
 
 
 
-let state = {
-    photos: [],
-    newPhoto: {
-        body: "salom",
-        id: 101,
-        title: "salom",
-        userId: 101
-    },
-    editPhoto: {}
-}
+// let state = {
+//     photos: [],
+//     newPhoto: {
+//         body: "salom",
+//         id: 101,
+//         title: "salom",
+//         userId: 101
+//     },
+//     editPhoto: {}
+// }
 
 
-let limit = 100
-function getPhotoRequest() {
-    return fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`, {
-        method: "GET",
-        headers: {
-            'Content-type': "application/json;"
-        }
-    })
-        .then((res) => res.json())
-        .then(photos => state.photos = state.photos.concat(photos))
+// let limit = 100
+// function getPhotoRequest() {
+//     return fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}`, {
+//         method: "GET",
+//         headers: {
+//             'Content-type': "application/json;"
+//         }
+//     })
+//         .then((res) => res.json())
+//         .then(photos => state.photos = state.photos.concat(photos))
 
-}
-getPhotoRequest()
+// }
+// getPhotoRequest()
 
 
-function postPhotoRequest() {
-    return fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: "POST",
-        body: JSON.stringify(state.newPhoto),
-        headers: {
-            'Content-type': "application/json;"
-        },
-    })
-        .then((res) => console.log(res.json()))
-        .then((post) => state.photos.push(post))
-        .catch(err => console.log(err))
-}
+// function postPhotoRequest() {
+//     return fetch('https://jsonplaceholder.typicode.com/posts', {
+//         method: "POST",
+//         body: JSON.stringify(state.newPhoto),
+//         headers: {
+//             'Content-type': "application/json;"
+//         },
+//     })
+//         .then((res) => console.log(res.json()))
+//         .then((post) => state.photos.push(post))
+//         .catch(err => console.log(err))
+// }
 
-postPhotoRequest()
+// postPhotoRequest()
 
-function deletePostRequest() {
-    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-        .then(res => res.json())
-}
+// function deletePostRequest() {
+//     return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+//         .then(res => res.json())
+// }
 
-btn.onclick = (id) => {
-    state.photos.splice(id, 1)
-    deletePostRequest()
-    getPhotoRequest()
-}
+// btn.onclick = (id) => {
+//     state.photos.splice(id, 1)
+//     deletePostRequest()
+//     getPhotoRequest()
+// }
 
-console.log(state);
+// console.log(state);
 
 // let a = ["salom", "xayr"]
 // let b = ["hello", "bye"]
 // let e = a.concat(b)
 // console.log(e);
 
-fetch('https://dummyjson.com/products')
-.then(res => res.json())
-.then(console.log);
-            
+// fetch('https://dummyjson.com/products')
+// .then(res => res.json())
+// .then(console.log);
+
+let getBtn = document.querySelector('.get')
+let box = document.querySelector('.box')
+let select = document.querySelector('select')
+
+let state = {
+    todos: [],
+    users: []
+}
+
+
+function getRequest() {
+    let getTodo = function () {
+        return fetch('http://localhost:5050/todos')
+            .then((res) => res.json())
+            .then((todos) => state.todos = state.todos.concat(todos))
+    }
+
+    let getUsers = function () {
+        return fetch('http://localhost:5050/users')
+            .then((res) => res.json())
+            .then((users) => state.users = state.users.concat(users))
+    }
+    getTodo()
+    getUsers()
+}
+
+getRequest()
+getBtn.addEventListener('click', () => {
+
+    getRequest()
+
+    
+    for (let i = 0; i < state.todos.length; i++) {
+        let liHtml = `
+            <li id=${state.todos[i].id} > ${state.todos[i].title} <button>delete</button> </li>
+        `
+
+        box.insertAdjacentHTML('beforeend', liHtml)
+    }
+})
+
+
+select.addEventListener('change', (event) => {
+    console.log(event.target.value);
+
+    if (event.target.value == 'day') {
+        document.body.style.backgroundColor = "red"
+    } else {
+        document.body.style.backgroundColor = "yellow"
+
+    }
+})
+
+
+
+console.log(state.todos);

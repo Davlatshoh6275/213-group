@@ -840,14 +840,16 @@
 // .then(console.log);
 
 let getBtn = document.querySelector('.get')
+let postBtn = document.querySelector('.post')
 let box = document.querySelector('.box')
 let select = document.querySelector('select')
 
 let state = {
     todos: [],
-    users: []
+    users: [],
 }
 
+let deleteBtn;
 
 function getRequest() {
     let getTodo = function () {
@@ -857,10 +859,12 @@ function getRequest() {
     }
 
     let getUsers = function () {
-        return fetch('http://localhost:5050/users')
+        return fetch('http://localhost:5050/users/')
             .then((res) => res.json())
             .then((users) => state.users = state.users.concat(users))
     }
+
+
     getTodo()
     getUsers()
 }
@@ -870,28 +874,90 @@ getBtn.addEventListener('click', () => {
 
     getRequest()
 
-    
+
     for (let i = 0; i < state.todos.length; i++) {
         let liHtml = `
-            <li id=${state.todos[i].id} > ${state.todos[i].title} <button>delete</button> </li>
+            <li id=${state.todos[i].id} > ${state.todos[i].title} <button class='deleteBtn' id=${state.todos[i].id}  >delete</button> <button onclick="changeTodo(${state.todos[i].id})" >change</button></li>
         `
-
         box.insertAdjacentHTML('beforeend', liHtml)
     }
-})
 
+    deleteBtn = document.querySelectorAll('.deleteBtn')
 
-select.addEventListener('change', (event) => {
-    console.log(event.target.value);
-
-    if (event.target.value == 'day') {
-        document.body.style.backgroundColor = "red"
-    } else {
-        document.body.style.backgroundColor = "yellow"
-
+    for (let i = 0; i < deleteBtn.length; i++) {
+        deleteBtn[i].addEventListener('click', (e) => {
+            e.preventDefault()
+            let id = e.target.id
+            fetch(`http://localhost:5050/todos/${id}`, {
+                method: 'DELETE'
+            }).then((res) => console.log(res.json()))
+            // deleteTode(id)
+        })
     }
+
+
+
+
+
 })
 
+// onclick={deleteBtn(${state.todos[i].id})}
+
+// select.addEventListener('change', (event) => {
+//     console.log(event.target.value);
+
+//     if (event.target.value == 'day') {
+//         document.body.style.backgroundColor = "red"
+//     } else {
+//         document.body.style.backgroundColor = "yellow"
+
+//     }
+// })
 
 
-console.log(state.todos);
+// function deleteBtn(id) {
+//     // event.preventDefault()
+//     deleteTode(id)
+//     getRequest()
+
+// }
+
+function deleteTode(id) {
+    fetch(`http://localhost:5050/todos/${id}`, {
+        method: 'DELETE'
+    }).then((res) => console.log(res.json()))
+}
+
+postBtn.addEventListener('click', () => {
+
+    fetch('http://localhost:5050/todos', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            "userId": 1,
+            "id": state.todos.length,
+            "title": "Pardaqulov Davlatshoh",
+            "completed": true
+        })
+    }).then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err))
+})
+
+function changeTodo(id) {
+    fetch(`http://localhost:5050/todos/${id}`, {
+        method: "PUT",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            "userId": 1,
+            "id": id,
+            "title": "salom",
+            "completed": true
+        })
+    })
+}
+
